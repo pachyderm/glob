@@ -67,10 +67,10 @@ func Compile(pattern string, separators ...rune) (*Glob, error) {
 		return nil, err
 	}
 	r, err := regexp2.Compile(regex, 0)
-	r.MatchTimeout = time.Minute * 5 // if it takes more than 5minutes to match a glob, something is very wrong
 	if err != nil {
 		return nil, err
 	}
+	r.MatchTimeout = time.Minute * 5 // if it takes more than 5minutes to match a glob, something is very wrong
 	return &Glob{r: r}, nil
 }
 
